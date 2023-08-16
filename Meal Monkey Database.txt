@@ -1,0 +1,52 @@
+create database foodbox;
+
+use foodbox;
+
+CREATE TABLE admin (
+    username VARCHAR(255) PRIMARY KEY,
+    password VARCHAR(255)
+);
+
+CREATE TABLE cart (
+    id BIGINT PRIMARY KEY,
+    quantity INT,
+    price FLOAT,
+    product_id BIGINT,
+    FOREIGN KEY (product_id) REFERENCES product(id)
+);
+
+CREATE TABLE customer (
+    email VARCHAR(255) PRIMARY KEY,
+    password VARCHAR(255),
+    name VARCHAR(255),
+    contact VARCHAR(255),
+    address VARCHAR(255)
+);
+
+CREATE TABLE product (
+    id BIGINT PRIMARY KEY,
+    name VARCHAR(255),
+    des VARCHAR(255),
+    category VARCHAR(255),
+    actualPrice FLOAT,
+    discount FLOAT,
+    price FLOAT,
+    avail VARCHAR(255),
+    imagepath VARCHAR(255)
+);
+
+CREATE TABLE purchase (
+    id BIGINT PRIMARY KEY,
+    totalcost FLOAT,
+    dop DATE,
+    quantity INT,
+    productname VARCHAR(255),
+    transactionid VARCHAR(255),
+    customer_email VARCHAR(255),
+    FOREIGN KEY (customer_email) REFERENCES customer(email)
+);
+
+
+
+
+
